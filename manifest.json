@@ -1,0 +1,16 @@
+{
+  "name": "D.Inc",
+  "short_name": "D.Inc",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#66ff99",
+  "description": "Zamawiaj pyszne topy z klasą.",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
