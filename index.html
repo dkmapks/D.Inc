@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D.Inc</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div class="container">
+    <h1>D.Inc – Zamów Ciasteczka</h1>
+    <form action="https://getform.io/f/agdljjlb" method="POST" id="orderForm">
+      <div class="product">
+        <label>Mefedron (ciastko):</label>
+        <input type="number" name="mefedron" min="0" value="0" data-price="50" /> g
+      </div>
+
+      <div class="product">
+        <label>Marihuana (ciastko):</label>
+        <input type="number" name="marichuana" min="0" value="0" data-price="50" /> g
+      </div>
+
+      <div class="user-info">
+        <label>Imię i nazwisko lub ksywka:</label>
+        <input type="text" name="name" required />
+        
+        <label>Adres dostawy:</label>
+        <textarea name="address" required></textarea>
+      </div>
+
+      <div class="summary">
+        <strong>Do zapłaty: <span id="total">0</span> zł</strong>
+      </div>
+
+      <button type="submit">Zamów</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('orderForm');
+    const inputs = form.querySelectorAll('input[type="number"]');
+    const totalEl = document.getElementById('total');
+
+    function updateTotal() {
+      let total = 0;
+      inputs.forEach(input => {
+        const price = parseFloat(input.dataset.price);
+        const quantity = parseInt(input.value) || 0;
+        total += price * quantity;
+      });
+      totalEl.textContent = total;
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener('input', updateTotal);
+    });
+
+    updateTotal();
+  </script>
+</body>
+</html>
